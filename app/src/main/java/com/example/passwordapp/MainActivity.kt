@@ -59,19 +59,19 @@ fun PasswordScreen() {
             modifier = Modifier.padding(bottom = 24.dp)
         )
 
-        // Using AndroidView to get precise control over InputType flags
         AndroidView(
             factory = { context ->
                 EditText(context).apply {
                     hint = "Password"
                     // Set input type to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
                     // This shows the password as visible text
-                    inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                    // this one hides suggestion strip from gboard
+                    inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
 
                     // Set IME flag to no suggestions (TYPE_TEXT_FLAG_NO_SUGGESTIONS)
-                    inputType = inputType or InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS
-
-                    // Additional styling
+                    // Makes no difference for suggestion strip?
+                    // gboard shows suggestion strip, swift key, samsung don't?
+//                    inputType = InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS
                     setPadding(32, 32, 32, 32)
                     textSize = 18f
                 }
